@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<title>GirlTalk App Wireframe v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#f8c7da;
+  --pink-l:#fce0eb;
+  --pink-bg:#fef4f8;
+  --blue:#273ba9;
+  --blue-l:#a0acf0;
+  --blue-bg:#e8ebff;
+  --green:#d2ff98;
+  --green-dark:#2D5A00;
+  --dark:#1a1a1a;
+  --white:#FFFFFF;
+  --border:#E0E0E0;
+  --bg:#F5F5F5;
+  --cream:#FFF8F0;
+}
+body{
+  background:#F0EBFF;
+  font-family:'Work Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ─── PAGE HEADER ─── */
+.page-header{
+  text-align:center;
+  padding:52px 24px 16px;
+  position:relative;
+}
+.page-header::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:100%;
+  background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(26,45,184,.08) 39px,rgba(26,45,184,.08) 40px),
+             repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(26,45,184,.08) 39px,rgba(26,45,184,.08) 40px);
+  pointer-events:none;
+}
+.page-header .eyebrow{
+  font-family:'Work Sans',sans-serif;font-size:11px;font-weight:800;
+  color:var(--blue);letter-spacing:.25em;text-transform:uppercase;
+  background:var(--green);padding:4px 14px;border-radius:2px;
+  display:inline-block;margin-bottom:12px;
+}
+.page-header h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:64px;letter-spacing:.04em;
+  color:var(--blue);
+  line-height:.95;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.heart-icon{color:var(--pink);animation:hb 1.8s ease-in-out infinite;display:inline-block}
+@keyframes hb{0%,100%{transform:scale(1)}45%{transform:scale(1.25)}}
+.page-header .sub{
+  font-size:12px;font-weight:700;color:rgba(26,45,184,.5);
+  margin-top:6px;letter-spacing:.06em;
+}
+
+/* ─── TAB SWITCHER ─── */
+.tabs{
+  display:flex;justify-content:center;gap:0;
+  padding:28px 24px 40px;
+}
+.tab{
+  padding:12px 30px;
+  font-family:'Work Sans',sans-serif;font-size:12px;font-weight:800;
+  cursor:pointer;border:2.5px solid var(--blue);
+  background:transparent;color:var(--blue);
+  text-transform:uppercase;letter-spacing:.08em;
+  transition:all .2s ease;
+}
+.tab:first-child{border-radius:4px 0 0 4px}
+.tab:last-child{border-radius:0 4px 4px 0;border-left:none}
+.tab.active-b{background:var(--pink);border-color:var(--pink);color:#fff}
+.tab.active-f{background:var(--blue);border-color:var(--blue);color:#fff}
+.tab:hover:not(.active-b):not(.active-f){background:var(--blue);color:#fff}
+
+/* ─── FLOW ─── */
+.flow{display:none;justify-content:center;gap:28px;flex-wrap:wrap;padding:0 20px 80px;animation:fadeIn .35s ease}
+.flow.visible{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── PHONE ─── */
+.col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.lbl{
+  font-family:'Work Sans',sans-serif;font-size:9px;font-weight:800;
+  color:var(--blue);letter-spacing:.18em;text-transform:uppercase;
+  background:var(--green);padding:3px 12px;border-radius:2px;
+}
+.phone{
+  width:375px;height:812px;
+  background:#fff;border-radius:44px;
+  box-shadow:6px 6px 0 var(--blue),0 0 0 2.5px var(--blue);
+  overflow:hidden;position:relative;flex-shrink:0;
+}
+.notch{width:110px;height:28px;background:#1a1a1a;border-radius:0 0 18px 18px;margin:0 auto;position:relative;z-index:20}
+.scr{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;background:#fff;transition:opacity .3s,transform .3s}
+.scr.hide{opacity:0;pointer-events:none;transform:scale(.97)}
+
+/* ─── TOPBAR ─── */
+.tb{
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;border-bottom:2.5px solid var(--blue);
+  background:var(--blue);flex-shrink:0;z-index:10;
+}
+.logo{
+  font-family:'Bebas Neue',sans-serif;font-size:20px;
+  letter-spacing:.06em;color:#f8c7da;
+}
+.hbg{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{display:block;width:20px;height:2.5px;background:#f8c7da;border-radius:1px;transition:all .3s}
+.hbg.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.av{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--pink);border:2px solid #f8c7da;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#fff;
+}
+.av-anon{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+}
+.av-anon svg{width:16px;height:16px;stroke:#f8c7da;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ─── DRAWER ─── */
+.drawer{
+  position:absolute;top:0;left:-300px;width:290px;height:100%;
+  background:#fff;z-index:100;display:flex;flex-direction:column;
+  border-right:2.5px solid var(--blue);
+  transition:left .3s cubic-bezier(.4,0,.2,1);
+}
+.drawer.open{left:0}
+.ov{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(26,45,184,.2);z-index:99;opacity:0;pointer-events:none;transition:opacity .3s}
+.ov.show{opacity:1;pointer-events:all}
+.dr-top{padding:28px 20px 16px;border-bottom:2px solid var(--border)}
+.dr-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#f8c7da;margin-bottom:10px}
+.dr-user{display:flex;align-items:center;gap:10px}
+.dr-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:2px solid var(--blue)}
+.dr-nav{flex:1;overflow-y:auto;padding:6px 0}
+.dr-sec{
+  font-size:8px;font-weight:800;color:#aaa;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 20px 3px;
+}
+.dr-item{
+  display:flex;align-items:center;gap:12px;padding:12px 20px;
+  cursor:pointer;transition:background .12s;
+}
+.dr-item:hover{background:var(--bg)}
+.dr-item.on{background:var(--pink-bg);border-left:3px solid var(--pink)}
+.dr-item svg{width:17px;height:17px;stroke:#bbb;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.dr-item.on svg{stroke:var(--pink)}
+.dr-lbl{font-size:13px;font-weight:700;color:#888;flex:1}
+.dr-item.on .dr-lbl{color:var(--pink);font-weight:800}
+.dr-bdg{padding:2px 8px;border-radius:3px;font-size:9px;font-weight:800;color:#fff}
+.dr-bot{padding:14px 20px;border-top:2px solid var(--border);display:flex;align-items:center;gap:10px;cursor:pointer}
+.dr-bot svg{width:15px;height:15px;stroke:#bbb;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dr-bot span{font-size:12px;color:#bbb;font-weight:700}
+
+/* ─── CAROUSEL ─── */
+.car{position:relative;overflow:hidden;flex-shrink:0}
+.ct{display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.cs{width:375px;height:210px;display:flex;align-items:flex-end;padding:22px;flex-shrink:0;position:relative;overflow:hidden}
+.s1{background:var(--blue)}
+.s2{background:var(--pink)}
+.s3{background:var(--green)}
+.ciph{position:absolute;top:0;right:0;width:140px;height:100%;display:flex;align-items:center;justify-content:center;opacity:.25}
+.iph{width:100px;height:120px;border:3px dashed rgba(255,255,255,.6);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.iph svg{width:28px;height:28px;stroke:rgba(255,255,255,.9);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ctxt{z-index:1;max-width:200px}
+.ctag{
+  display:inline-block;background:var(--green);color:var(--blue);
+  font-size:9px;font-weight:800;padding:3px 10px;border-radius:2px;
+  margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;
+}
+.s2 .ctag{background:var(--blue);color:#fff}
+.s3 .ctag{background:var(--blue);color:#fff}
+.ctxt h2{
+  font-family:'Bebas Neue',sans-serif;font-size:28px;
+  letter-spacing:.04em;color:#fff;line-height:1;margin-bottom:12px;
+}
+.s3 .ctxt h2{color:var(--blue)}
+.cbtn{
+  display:inline-flex;background:#fff;color:var(--blue);
+  font-size:11px;font-weight:800;padding:7px 14px;
+  border-radius:3px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:.06em;
+}
+.s1 .cbtn{background:var(--green);color:var(--blue)}
+.cdots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.cdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .2s}
+.cdot.on{background:#fff;width:18px;border-radius:3px}
+.carr{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;background:rgba(255,255,255,.9);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:none;box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+.carr svg{width:13px;height:13px;stroke:#333;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.al{left:10px}.ar{right:10px}
+
+/* ─── CONTENT ─── */
+.cnt{flex:1;overflow-y:auto;padding-bottom:74px}
+.sec{padding:16px 16px 0}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.st{
+  font-family:'Work Sans',sans-serif;font-weight:800;font-size:13px;
+  color:var(--dark);text-transform:uppercase;letter-spacing:.04em;
+}
+.sl{font-size:11px;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+
+/* ─── QUICK GRID ─── */
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qc{
+  border-radius:8px;padding:14px;cursor:pointer;
+  display:flex;flex-direction:column;gap:6px;
+  transition:transform .15s;border:2px solid transparent;
+}
+.qc:active{transform:scale(.96)}
+.qc.p{background:var(--pink-bg);border-color:var(--pink-l)}
+.qc.b{background:var(--blue-bg);border-color:var(--blue-l)}
+.qc.g{background:var(--green);border-color:#A8D000}
+.qc.o{background:#FFF0D0;border-color:#FFD980}
+.qi{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.qc.p .qi{background:var(--pink)}
+.qc.b .qi{background:var(--blue)}
+.qc.g .qi{background:var(--blue)}
+.qc.o .qi{background:#E65100}
+.qi svg{width:16px;height:16px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:#fff}
+.ql{font-size:12px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.03em}
+.qs{font-size:10px;color:#666;line-height:1.4;font-weight:600}
+
+/* ─── NEWS SCROLL ─── */
+.ns{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none}
+.ns::-webkit-scrollbar{display:none}
+.nc{flex-shrink:0;width:170px;border-radius:8px;overflow:hidden;background:var(--bg);border:2px solid var(--border)}
+.ni{width:100%;height:82px;background:#E0E0E0;display:flex;align-items:center;justify-content:center}
+.ni svg{width:20px;height:20px;stroke:#bbb;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.nb{padding:9px}
+.ntg{font-size:9px;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.nt{font-size:11px;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:2px}
+.nd{font-size:9.5px;color:#aaa}
+
+/* ─── BOTTOM NAV ─── */
+.bn{
+  position:absolute;bottom:0;left:0;right:0;height:68px;
+  background:#fff;border-top:2.5px solid var(--blue);
+  display:flex;align-items:center;justify-content:space-around;
+  padding:0 8px 8px;
+}
+.bi{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px 10px;position:relative;transition:transform .15s}
+.bi:active{transform:scale(.88)}
+.bi svg{width:22px;height:22px;stroke:#bbb;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.bi span{font-size:9px;font-weight:800;color:#bbb;transition:color .2s;text-transform:uppercase;letter-spacing:.04em}
+.bi.on svg{stroke:var(--pink)}.bi.on span{color:var(--pink)}
+.bdg{position:absolute;top:3px;right:7px;width:8px;height:8px;background:var(--pink);border-radius:50%;border:2px solid #fff;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+
+/* ─── STARTSIDE ─── */
+.start{display:flex;flex-direction:column;min-height:812px}
+.shero{
+  background:var(--blue);
+  padding:48px 26px 32px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  position:relative;overflow:hidden;
+}
+.shero::after{
+  content:'♥';position:absolute;right:-10px;top:20px;
+  font-size:130px;color:rgba(255,255,255,.06);line-height:1;
+}
+.slogo{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.04em;color:#fff;line-height:.95}
+.stag{
+  font-size:12px;font-weight:700;color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.12);padding:4px 12px;border-radius:2px;
+}
+.sbadge{
+  display:inline-block;background:var(--green);color:var(--blue);
+  font-size:9px;font-weight:800;padding:4px 12px;border-radius:2px;
+  text-transform:uppercase;letter-spacing:.1em;margin-top:4px;
+}
+.sbody{padding:22px 20px;flex:1;display:flex;flex-direction:column;gap:12px}
+.sdiv{
+  font-family:'Work Sans',sans-serif;font-size:10px;font-weight:800;
+  color:#aaa;text-align:center;text-transform:uppercase;letter-spacing:.12em;
+  display:flex;align-items:center;gap:8px;
+}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1.5px;background:#E8E8E8}
+.rcard{
+  border-radius:8px;padding:18px;display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:transform .15s,box-shadow .2s;border:2.5px solid;
+}
+.rcard:hover{transform:translateY(-2px);box-shadow:4px 4px 0}
+.rcard:active{transform:scale(.98)}
+.rcard.ung{background:var(--pink-bg);border-color:var(--pink);box-shadow:none}
+.rcard.ung:hover{box-shadow:4px 4px 0 var(--pink)}
+.rcard.fri{background:var(--blue-bg);border-color:var(--blue);box-shadow:none}
+.rcard.fri:hover{box-shadow:4px 4px 0 var(--blue)}
+.rci{width:46px;height:46px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rcard.ung .rci{background:var(--pink)}
+.rcard.fri .rci{background:var(--blue)}
+.rci svg{width:22px;height:22px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:#fff}
+.rct{flex:1}
+.rct .rtitle{font-family:'Work Sans',sans-serif;font-weight:800;font-size:15px;color:var(--dark);margin-bottom:3px;text-transform:uppercase;letter-spacing:.02em}
+.rct .rsub{font-size:11px;color:#777;line-height:1.4}
+.rct .rbdg{display:inline-block;font-size:8px;font-weight:800;padding:3px 9px;border-radius:2px;margin-top:5px;text-transform:uppercase;letter-spacing:.06em}
+.rcard.ung .rbdg{background:var(--pink);color:#fff}
+.rcard.fri .rbdg{background:var(--blue);color:#fff}
+.rarr{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rcard.ung .rarr{background:var(--pink)}.rcard.fri .rarr{background:var(--blue)}
+.rarr svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.sftr{padding:0 20px 24px;text-align:center;font-size:10px;color:#bbb;line-height:1.8;font-weight:600}
+
+/* ─── LOGIN ─── */
+.login{display:flex;flex-direction:column;min-height:812px}
+.lhero{
+  background:var(--blue);padding:48px 26px 30px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+}
+.llogo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;color:#fff}
+.ltag{font-size:11px;font-weight:700;color:rgba(255,255,255,.6)}
+.lbadge{
+  background:var(--green);color:var(--blue);font-size:9px;font-weight:800;
+  padding:4px 12px;border-radius:2px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px;
+}
+.lbody{padding:22px 20px;flex:1}
+.lh{font-family:'Work Sans',sans-serif;font-weight:800;font-size:18px;color:var(--dark);margin-bottom:4px;text-transform:uppercase;letter-spacing:.02em}
+.ls{font-size:12px;color:#888;margin-bottom:22px;line-height:1.5;font-weight:600}
+.ig{margin-bottom:12px}
+.il{display:block;font-size:9px;font-weight:800;color:var(--blue);margin-bottom:4px;letter-spacing:.1em;text-transform:uppercase}
+.inp{
+  width:100%;padding:12px 14px;border-radius:6px;
+  border:2.5px solid var(--border);font-family:'Work Sans',sans-serif;
+  font-size:13px;color:var(--dark);outline:none;background:#FAFAFA;
+  transition:border-color .2s,box-shadow .2s;font-weight:600;
+}
+.inp:focus{border-color:var(--blue);background:#fff;box-shadow:3px 3px 0 var(--blue-l)}
+.fgt{text-align:right;margin-bottom:18px;font-size:11px;font-weight:800;color:var(--blue);cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+.lbtn{
+  width:100%;padding:14px;border-radius:6px;
+  background:var(--pink);color:#fff;font-family:'Work Sans',sans-serif;
+  font-size:13px;font-weight:800;border:2.5px solid var(--pink);cursor:pointer;
+  margin-bottom:12px;transition:transform .15s,box-shadow .2s;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.lbtn:hover{transform:translateY(-1px);box-shadow:4px 4px 0 var(--blue)}
+.lbtn:active{transform:scale(.98)}
+.lnote{text-align:center;font-size:10px;color:#bbb;line-height:1.7;padding:0 6px;font-weight:600}
+
+/* ─── CHAT ─── */
+.chat-scr{display:flex;flex-direction:column;min-height:812px;background:#F8F8F8}
+.chdr{
+  background:#fff;border-bottom:2.5px solid var(--blue);
+  padding:0 14px;height:58px;display:flex;align-items:center;gap:10px;flex-shrink:0;
+}
+.bk svg{width:20px;height:20px;stroke:var(--blue);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;cursor:pointer}
+.chav{
+  width:36px;height:36px;border-radius:50%;background:var(--pink);
+  border:2px solid var(--blue);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.chav svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chui h3{font-family:'Work Sans',sans-serif;font-size:13px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.02em}
+.chui p{font-size:10px;color:#aaa;font-weight:600}
+.chmore{margin-left:auto}
+.chmore svg{width:18px;height:18px;stroke:#bbb;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ibar{
+  background:var(--green);padding:8px 16px;
+  border-bottom:2px solid var(--blue);
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+}
+.ibar svg{width:12px;height:12px;stroke:var(--blue);fill:none;stroke-width:2;flex-shrink:0;stroke-linecap:round;stroke-linejoin:round}
+.ibar span{font-size:11px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{display:flex;flex-direction:column;max-width:78%}
+.msg.r{align-self:flex-start}.msg.s{align-self:flex-end;align-items:flex-end}
+.bbl{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5;font-weight:600}
+.msg.r .bbl{background:#fff;color:var(--dark);border-bottom-left-radius:3px;border:2px solid var(--border)}
+.msg.s .bbl{background:var(--blue);color:#fff;border-bottom-right-radius:3px}
+.mt{font-size:9px;color:#ccc;margin-top:2px;padding:0 3px;font-weight:700}
+.sys{
+  align-self:center;background:var(--blue-bg);padding:3px 12px;
+  border-radius:3px;font-size:10px;color:var(--blue);font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.typing{
+  align-self:flex-start;background:#fff;border-radius:12px;
+  border-bottom-left-radius:3px;padding:12px 14px;
+  display:flex;gap:5px;border:2px solid var(--border);
+}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--pink);display:block;animation:td 1.4s ease infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
+.qrow{
+  display:flex;gap:7px;overflow-x:auto;padding:10px 14px;
+  background:#fff;border-top:2px solid var(--border);
+  scrollbar-width:none;flex-shrink:0;
+}
+.qrow::-webkit-scrollbar{display:none}
+.qr{
+  flex-shrink:0;padding:6px 13px;border-radius:3px;
+  border:2px solid var(--blue);background:transparent;
+  color:var(--blue);font-size:10.5px;font-weight:800;cursor:pointer;
+  transition:all .15s;text-transform:uppercase;letter-spacing:.04em;
+}
+.qr:hover{background:var(--blue);color:#fff}
+.ir{display:flex;gap:8px;align-items:center;padding:10px 14px 18px;background:#fff;flex-shrink:0}
+.mi{
+  flex:1;padding:11px 13px;border-radius:6px;
+  border:2.5px solid var(--border);font-family:'Work Sans',sans-serif;
+  font-size:13px;outline:none;background:#F8F8F8;
+  transition:border-color .2s;font-weight:600;
+}
+.mi:focus{border-color:var(--blue)}
+.send{
+  width:42px;height:42px;border-radius:6px;
+  background:var(--pink);border:2px solid #f8c7da;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:transform .15s,box-shadow .2s;
+}
+.send:hover{transform:scale(1.06);box-shadow:3px 3px 0 var(--blue)}
+.send svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ─── DASHBOARD ─── */
+.dash-top{background:var(--blue);padding:14px 16px;flex-shrink:0}
+.dash-welcome{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.04em;color:#fff;margin-bottom:1px}
+.dash-sub{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:10px;font-weight:700}
+.spills{display:flex;gap:6px}
+.spill{
+  padding:5px 12px;border-radius:3px;font-size:9px;font-weight:800;
+  cursor:pointer;border:2px solid rgba(255,255,255,.3);
+  background:transparent;color:rgba(255,255,255,.5);
+  transition:all .2s;text-transform:uppercase;letter-spacing:.06em;
+}
+.spill.avail{background:var(--green);border-color:var(--green);color:var(--blue)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:10px 14px}
+.sc{background:#fff;border-radius:6px;padding:10px;text-align:center;border:2px solid var(--border)}
+.sn{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.04em}
+.sn.p{color:var(--pink)}.sn.b{color:var(--blue)}.sn.d{color:var(--dark)}
+.sl2{font-size:9px;color:#aaa;margin-top:1px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.ttabs{display:flex;border-bottom:2.5px solid var(--blue);background:#fff;flex-shrink:0}
+.ttab{
+  flex:1;padding:11px;text-align:center;
+  font-size:10px;font-weight:800;color:#bbb;cursor:pointer;
+  transition:color .2s;border-bottom:2.5px solid transparent;
+  margin-bottom:-2.5px;text-transform:uppercase;letter-spacing:.04em;
+}
+.ttab.on{color:var(--pink);border-bottom-color:var(--pink)}
+.chat-list{padding:0 14px}
+.ci{
+  display:flex;align-items:center;gap:10px;padding:12px 0;
+  border-bottom:1.5px solid #F0F0F0;cursor:pointer;transition:background .1s;
+}
+.ci:hover{background:#FAFAFA;margin:0 -14px;padding-left:14px;padding-right:14px}
+.urg{width:3px;height:40px;border-radius:2px;flex-shrink:0}
+.ciav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;position:relative;flex-shrink:0;border:2px solid var(--border)}
+.ciav.p{background:var(--pink-bg);color:var(--pink);border-color:var(--pink-l)}
+.ciav.b{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-l)}
+.ciav.g{background:var(--green);color:var(--blue)}
+.odot{position:absolute;bottom:1px;right:1px;width:9px;height:9px;border-radius:50%;border:2px solid #fff}
+.odot.on{background:#4CAF50}.odot.wt{background:#FF9800}
+.cii{flex:1;min-width:0}
+.citp{display:flex;justify-content:space-between;margin-bottom:2px}
+.cinm{font-size:12px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.02em}
+.citm{font-size:10px;color:#bbb;font-weight:700}
+.cimsg{font-size:11px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.cibdg{background:var(--pink);color:#fff;font-size:9px;font-weight:800;padding:2px 7px;border-radius:3px;text-transform:uppercase}
+
+/* ─── SENESTE SAMTALER ─── */
+.samtaler-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px 14px}
+.sam-card{border-radius:8px;overflow:hidden;background:white;cursor:pointer;border:2px solid var(--border);transition:transform .15s,box-shadow .15s}
+.sam-card:hover{transform:translateY(-2px);box-shadow:4px 4px 0 var(--blue)}
+.sam-img{height:88px;background:#EBEBEB;display:flex;align-items:center;justify-content:center}
+.sam-img svg{width:22px;height:22px;stroke:#bbb;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.sam-body{padding:9px}
+.sam-tag{font-size:8px;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px}
+.sam-name{font-size:12px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:.02em}
+.sam-time{font-size:9.5px;color:#aaa;margin-top:2px;font-weight:600}
+
+/* ─── TOAST ─── */
+.toast-container{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.toast{
+  background:var(--blue);color:#fff;padding:9px 20px;border-radius:4px;
+  font-family:'Work Sans',sans-serif;font-size:11px;font-weight:800;
+  box-shadow:4px 4px 0 rgba(0,0,0,.2);
+  opacity:0;transform:translateY(14px);transition:all .28s ease;white-space:nowrap;
+  text-transform:uppercase;letter-spacing:.06em;border:2px solid rgba(255,255,255,.3);
+}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.pink{background:var(--pink)}
+.toast.green{background:var(--green);color:var(--blue);border-color:rgba(26,45,184,.3)}
+</style>
+</head>
+<body>
+
+<div class="toast-container" id="toasts"></div>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="eyebrow">GirlTalk · App Wireframe</div>
+  <h1>GIRL<span class="heart-icon">♥</span>TALK</h1>
+  <div class="sub">Du er altid god nok · Wireframe v3</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active-b" id="tab-b" onclick="switchTab('bruger')">🤍 Bruger flow</div>
+  <div class="tab" id="tab-f" onclick="switchTab('frivillig')">👥 Frivillig flow</div>
+</div>
+
+<!-- ══════════════════════════════ -->
+<!-- BRUGER FLOW                    -->
+<!-- ══════════════════════════════ -->
+<div class="flow visible" id="flow-bruger">
+
+  <!-- 00 STARTSIDE -->
+  <div class="col">
+    <div class="lbl">00 — Startside</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="start">
+          <div class="shero">
+            <div class="slogo">GIRLTALK ♥ DK</div>
+            <div class="stag">Du er altid god nok</div>
+            <div class="sbadge">Åbn for alle · Ingen konto</div>
+          </div>
+          <div class="sbody">
+            <div class="sdiv">Hvem er du?</div>
+            <div class="rcard ung" onclick="toast('Bruger-flow ♥','pink')">
+              <div class="rci"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div class="rct">
+                <div class="rtitle">Jeg er ung</div>
+                <div class="rsub">Snak med en frivillig rådgiver — fortroligt</div>
+                <div class="rbdg">Ingen login</div>
+              </div>
+              <div class="rarr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+            </div>
+            <div class="rcard fri" onclick="toast('Frivillig-flow →','blue')">
+              <div class="rci"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+              <div class="rct">
+                <div class="rtitle">Jeg er frivillig</div>
+                <div class="rsub">Log ind og start din vagt som rådgiver</div>
+                <div class="rbdg">Login krævet</div>
+              </div>
+              <div class="rarr"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+            </div>
+          </div>
+          <div class="sftr">girltalk.dk · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e78e898188a7808e958b93868b8cc9838c">[email&#160;protected]</a><br>51 91 33 77 · Frederiksberg C</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 BRUGER FORSIDE -->
+  <div class="col">
+    <div class="lbl">01 — Bruger forside</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr" id="bscr-home">
+        <div class="ov" id="bov" onclick="closeDrawer('bdr','bov','bhbg')"></div>
+        <div class="drawer" id="bdr">
+          <div class="dr-top">
+            <div class="dr-logo">GIRLTALK ♥ DK</div>
+            <div style="font-size:11px;color:#aaa;font-weight:700">ANONYM BESØGENDE</div>
+          </div>
+          <div class="dr-nav">
+            <div class="dr-item on"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="dr-lbl">Forside</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="dr-lbl">Skriv til os</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="dr-lbl">Fællesskaber</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><span class="dr-lbl">Podcast</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg><span class="dr-lbl">Støt os</span></div>
+          </div>
+        </div>
+        <div class="tb">
+          <div class="hbg" id="bhbg" onclick="toggleDrawer('bdr','bov','bhbg')"><span></span><span></span><span></span></div>
+          <div class="logo">GIRLTALK ♥ DK</div>
+          <div class="av-anon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        </div>
+        <div class="car">
+          <div class="ct" id="bc1">
+            <div class="cs s1"><div class="ctxt"><div class="ctag">For dig</div><h2>VI ER HER FOR DIG</h2><button class="cbtn">Skriv til os →</button></div></div>
+            <div class="cs s2"><div class="ctxt"><div class="ctag">Podcast</div><h2>MIT YNGRE JEG</h2><button class="cbtn">Lyt nu →</button></div></div>
+            <div class="cs s3"><div class="ctxt"><div class="ctag">Fællesskab</div><h2>GIRLS EMPOWER GIRLS</h2><button class="cbtn">Se mere →</button></div></div>
+          </div>
+          <button class="carr al" onclick="slide('bc1','bd1',-1,3)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="carr ar" onclick="slide('bc1','bd1',1,3)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="cdots" id="bd1"><div class="cdot on"></div><div class="cdot"></div><div class="cdot"></div></div>
+        </div>
+        <div class="cnt">
+          <div class="sec">
+            <div class="sh"><div class="st">Hvad har du brug for?</div></div>
+            <div class="qg">
+              <div class="qc p" onclick="toast('Åbner chat','pink')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="ql">Skriv til os</div><div class="qs">Chat med en frivillig</div></div>
+              <div class="qc b" onclick="toast('Fællesskaber →','blue')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="ql">Fællesskaber</div><div class="qs">Find andre unge</div></div>
+              <div class="qc g" onclick="toast('Podcast →')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><div class="ql">Podcast</div><div class="qs">Mit Yngre Jeg</div></div>
+              <div class="qc o" onclick="toast('Støt os ♥')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div><div class="ql">Støt os</div><div class="qs">Gør en forskel</div></div>
+            </div>
+          </div>
+          <div class="sec" style="margin-top:14px"><div class="sh"><div class="st">Aktuelt</div><div class="sl">Se alle →</div></div></div>
+          <div class="ns">
+            <div class="nc"><div class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div class="nb"><div class="ntg">Nyheder</div><div class="nt">Ny kampagne: Du er god nok</div><div class="nd">24. juni 2025</div></div></div>
+            <div class="nc"><div class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div class="nb"><div class="ntg">Podcast</div><div class="nt">Mit Yngre Jeg — ny episode</div><div class="nd">11. juni 2025</div></div></div>
+            <div class="nc"><div class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div class="nb"><div class="ntg">Ambassadør</div><div class="nt">Sarah G. ny ambassadør</div><div class="nd">10. juni 2025</div></div></div>
+          </div>
+        </div>
+        <div class="bn">
+          <div class="bi on"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Hjem</span></div>
+          <div class="bi" style="position:relative"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div class="bdg"></div><span>Chat</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Fællesskab</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Om os</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 BRUGER CHAT -->
+  <div class="col">
+    <div class="lbl">02 — Bruger chat</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="chat-scr">
+          <div class="chdr">
+            <div class="bk"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+            <div class="chav"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></div>
+            <div class="chui"><h3>GirlTalk</h3><p>Frivillig rådgiver · Online nu</p></div>
+            <div class="chmore"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg></div>
+          </div>
+          <div class="ibar">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span>Anonym og fortrolig</span>
+          </div>
+          <div class="msgs" id="bmsgs">
+            <div class="sys">Samtale startet kl. 15:10</div>
+            <div class="msg r"><div class="bbl">Hej! Velkommen til GirlTalk. Hvad kan jeg hjælpe dig med?</div><span class="mt">15:10</span></div>
+            <div class="msg s"><div class="bbl">Hej, jeg har det lidt svært derhjemme for tiden</div><span class="mt">15:11</span></div>
+            <div class="msg r"><div class="bbl">Det lyder hårdt. Du er modig for at række ud. Vil du fortælle mere?</div><span class="mt">15:12</span></div>
+            <div class="msg s"><div class="bbl">Mine forældre skændes meget om dagen</div><span class="mt">15:13</span></div>
+            <div class="msg r"><div class="bbl">Det kan være rigtig belastende. Du er ikke alene 💗</div><span class="mt">15:14</span></div>
+            <div class="typing"><span></span><span></span><span></span></div>
+          </div>
+          <div class="qrow">
+            <div class="qr" onclick="sendQR('bmi','bmsgs',this)">Hvad gør jeg nu?</div>
+            <div class="qr" onclick="sendQR('bmi','bmsgs',this)">Kan du hjælpe mig?</div>
+            <div class="qr" onclick="sendQR('bmi','bmsgs',this)">Jeg er ked af det</div>
+          </div>
+          <div class="ir">
+            <input class="mi" id="bmi" placeholder="Skriv en besked..." onkeydown="if(event.key==='Enter')sendMsg('bmi','bmsgs')">
+            <button class="send" onclick="sendMsg('bmi','bmsgs')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════ -->
+<!-- FRIVILLIG FLOW                 -->
+<!-- ══════════════════════════════ -->
+<div class="flow" id="flow-frivillig">
+
+  <!-- 03 LOGIN -->
+  <div class="col">
+    <div class="lbl">03 — Frivillig login</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="login">
+          <div class="lhero">
+            <div class="llogo">GIRLTALK ♥ DK</div>
+            <div class="ltag">Portal for frivillige rådgivere</div>
+            <div class="lbadge">Login krævet · Kun frivillige</div>
+          </div>
+          <div class="lbody">
+            <div class="lh">Velkommen tilbage</div>
+            <div class="ls">Log ind med din GirlTalk-konto for at starte din vagt og rådgive unge.</div>
+            <div class="ig"><label class="il">E-mail</label><input class="inp" type="email" placeholder="navn@girltalk.dk"></div>
+            <div class="ig"><label class="il">Adgangskode</label><input class="inp" type="password" placeholder="••••••••"></div>
+            <div class="fgt">Glemt adgangskode?</div>
+            <button class="lbtn" onclick="toast('Logger ind ✓','pink')">Log ind som frivillig →</button>
+            <div class="lnote">Kun for godkendte GirlTalk-frivillige.<br>Kontakt <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2dbdcd4ddf2d5dbc0dec6d3ded99cd6d9">[email&#160;protected]</a> for adgang.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 PERSONALE FORSIDE -->
+  <div class="col">
+    <div class="lbl">04 — Personale forside</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="ov" id="fov" onclick="closeDrawer('fdr','fov','fhbg')"></div>
+        <div class="drawer" id="fdr">
+          <div class="dr-top">
+            <div class="dr-logo">GIRLTALK ♥ DK</div>
+            <div class="dr-user">
+              <div class="dr-av" style="background:var(--pink);color:#fff">ML</div>
+              <div><div style="font-size:13px;font-weight:800;color:var(--dark)">Maria Larsen</div><div style="font-size:10px;color:#aaa;font-weight:600">Frivillig rådgiver · Online</div></div>
+            </div>
+          </div>
+          <div class="dr-nav">
+            <div class="dr-sec">Rådgivning</div>
+            <div class="dr-item on"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="dr-lbl">Samtaler</span><span class="dr-bdg" style="background:var(--pink)">3</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="dr-lbl">Køoversigt</span><span class="dr-bdg" style="background:#FF9800">2</span></div>
+            <div class="dr-sec">Team</div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="dr-lbl">Mit team</span><span style="font-size:10px;color:#4CAF50;font-weight:800">5 online</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="dr-lbl">Intern chat</span></div>
+            <div class="dr-sec">Andet</div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="dr-lbl">Ressourcer</span></div>
+            <div class="dr-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg><span class="dr-lbl">Indstillinger</span></div>
+          </div>
+          <div class="dr-bot" onclick="toast('Logger ud...')"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Log ud</span></div>
+        </div>
+        <div class="tb">
+          <div class="hbg" id="fhbg" onclick="toggleDrawer('fdr','fov','fhbg')"><span></span><span></span><span></span></div>
+          <div class="logo">GIRLTALK ♥ DK</div>
+          <div class="av">ML</div>
+        </div>
+        <div class="car">
+          <div class="ct" id="fc1">
+            <div class="cs s1"><div class="ctxt"><div class="ctag">Aktuel vagt</div><h2>3 UNGE VENTER</h2><button class="cbtn" onclick="toast('Starter vagt ✓','pink')">Start nu →</button></div></div>
+            <div class="cs s2"><div class="ciph"><div class="iph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></div><div class="ctxt"><div class="ctag">Team</div><h2>5 FRIVILLIGE ONLINE</h2><button class="cbtn">Se team →</button></div></div>
+          </div>
+          <button class="carr al" onclick="slide('fc1','fd1',-1,2)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="carr ar" onclick="slide('fc1','fd1',1,2)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="cdots" id="fd1"><div class="cdot on"></div><div class="cdot"></div></div>
+        </div>
+        <div class="cnt">
+          <div class="sec">
+            <div class="sh"><div class="st">Hurtige handlinger</div></div>
+            <div class="qg">
+              <div class="qc p" onclick="toast('Aktive chats','pink')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="ql">Aktive chats</div><div class="qs">3 samtaler i gang</div></div>
+              <div class="qc b" onclick="toast('Kø →','blue')"><div class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ql">Kø</div><div class="qs">2 venter på svar</div></div>
+              <div class="qc g" onclick="toast('Team: 5 online')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="ql">Mit team</div><div class="qs">5 online nu</div></div>
+              <div class="qc o" onclick="toast('Ressourcer →')"><div class="qi"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="ql">Ressourcer</div><div class="qs">Guides & skabeloner</div></div>
+            </div>
+          </div>
+          <div class="sec" style="margin-top:14px">
+            <div class="sh"><div class="st">Seneste samtaler</div><div class="sl" onclick="toast('Se alle →')">Se alle →</div></div>
+          </div>
+          <div class="samtaler-grid">
+            <div class="sam-card" onclick="toast('Anonym #142','pink')">
+              <div class="sam-img"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+              <div class="sam-body"><div class="sam-tag">Afsluttet</div><div class="sam-name">Anonym #142 · 24 min</div><div class="sam-time">I dag kl. 14:32</div></div>
+            </div>
+            <div class="sam-card" onclick="toast('Anonym #139')">
+              <div class="sam-img"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+              <div class="sam-body"><div class="sam-tag">Afsluttet</div><div class="sam-name">Anonym #139 · 18 min</div><div class="sam-time">I dag kl. 12:10</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bn">
+          <div class="bi on"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Hjem</span></div>
+          <div class="bi" style="position:relative"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div class="bdg"></div><span>Chats</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Team</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg><span>Indstil.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 SAMTALELISTE -->
+  <div class="col">
+    <div class="lbl">05 — Samtaleliste</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="tb">
+          <div class="hbg"><span></span><span></span><span></span></div>
+          <div class="logo">Samtaler</div>
+          <div style="width:32px;height:32px;border-radius:6px;background:var(--pink);border:2px solid #f8c7da;display:flex;align-items:center;justify-content:center;cursor:pointer" onclick="toast('Ny samtale ✓','pink')"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </div>
+        <div class="dash-top">
+          <div class="dash-welcome">God dag, Maria 👋</div>
+          <div class="dash-sub">Mandag 9. marts · Vagt 14:00–18:00</div>
+          <div class="spills">
+            <div class="spill avail" id="spill-av" onclick="setStatus(this,'Tilgængelig')">● Tilgængelig</div>
+            <div class="spill" id="spill-pa" onclick="setStatus(this,'Pause')">Pause</div>
+            <div class="spill" id="spill-of" onclick="setStatus(this,'Offline')">Offline</div>
+          </div>
+        </div>
+        <div class="sgrid">
+          <div class="sc"><div class="sn p">3</div><div class="sl2">Aktive</div></div>
+          <div class="sc"><div class="sn b">2</div><div class="sl2">Venter</div></div>
+          <div class="sc"><div class="sn d">8</div><div class="sl2">I dag</div></div>
+        </div>
+        <div class="ttabs">
+          <div class="ttab on" onclick="toast('Aktive samtaler')">Aktive (3)</div>
+          <div class="ttab" onclick="toast('Ventende samtaler')">Venter (2)</div>
+          <div class="ttab" onclick="toast('Afsluttede samtaler')">Afsluttet</div>
+        </div>
+        <div class="cnt" style="padding-bottom:74px">
+          <div class="chat-list">
+            <div class="ci" onclick="toast('Åbner #142 💬','pink')">
+              <div class="urg" style="background:var(--pink)"></div>
+              <div class="ciav p">A<div class="odot on"></div></div>
+              <div class="cii"><div class="citp"><span class="cinm">Anonym #142</span><span class="citm">Nu</span></div><div class="cimsg">Jeg ved ikke hvad jeg skal gøre...</div></div>
+              <div class="cibdg">3</div>
+            </div>
+            <div class="ci" onclick="toast('Åbner #139 💬')">
+              <div class="urg" style="background:transparent"></div>
+              <div class="ciav b">B<div class="odot on"></div></div>
+              <div class="cii"><div class="citp"><span class="cinm">Anonym #139</span><span class="citm">2 min</span></div><div class="cimsg">Tak, det hjælper meget ❤️</div></div>
+            </div>
+            <div class="ci" onclick="toast('Åbner #137 💬')">
+              <div class="urg" style="background:transparent"></div>
+              <div class="ciav g">C<div class="odot wt"></div></div>
+              <div class="cii"><div class="citp"><span class="cinm">Anonym #137</span><span class="citm">14 min</span></div><div class="cimsg">Har du tid til at snakke lidt mere?</div></div>
+              <div class="cibdg">1</div>
+            </div>
+          </div>
+        </div>
+        <div class="bn">
+          <div class="bi"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Hjem</span></div>
+          <div class="bi on" style="position:relative"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div class="bdg"></div><span>Chats</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Team</span></div>
+          <div class="bi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg><span>Indstil.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 AKTIV SAMTALE -->
+  <div class="col">
+    <div class="lbl">06 — Aktiv samtale</div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="scr">
+        <div class="chat-scr">
+          <div class="chdr">
+            <div class="bk"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+            <div class="ciav p" style="width:36px;height:36px;border-radius:50%;background:var(--pink-bg);border:2px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--pink);position:relative;flex-shrink:0">A<div class="odot on"></div></div>
+            <div class="chui"><h3>Anonym #142</h3><p>Aktiv nu · Første samtale</p></div>
+            <div style="display:flex;gap:6px;margin-left:auto">
+              <div style="padding:5px 10px;border-radius:4px;background:var(--pink-bg);border:2px solid var(--pink);font-size:9px;font-weight:800;color:var(--pink);cursor:pointer;text-transform:uppercase;letter-spacing:.04em" onclick="toast('Overfører...')">Overfør</div>
+              <div style="padding:5px 10px;border-radius:4px;background:var(--green);border:2px solid var(--blue);font-size:9px;font-weight:800;color:var(--blue);cursor:pointer;text-transform:uppercase;letter-spacing:.04em" onclick="toast('Afsluttet ✓','green')">✓ Afslut</div>
+            </div>
+          </div>
+          <div style="background:#fff;padding:7px 14px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px;flex-shrink:0">
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:#bbb;fill:none;stroke-width:2;flex-shrink:0;stroke-linecap:round;stroke-linejoin:round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span style="font-size:10.5px;color:#aaa;font-weight:700;flex:1">Ingen interne noter endnu</span>
+            <span style="font-size:9px;font-weight:800;color:var(--blue);cursor:pointer;text-transform:uppercase;letter-spacing:.04em" onclick="toast('Tilføjer note...','blue')">+ Tilføj</span>
+          </div>
+          <div class="msgs" id="fmsgs">
+            <div class="sys">Samtale startet kl. 14:32</div>
+            <div class="msg r"><div class="bbl">Hej, jeg har det ikke særlig godt i dag 😔</div><span class="mt">14:32</span></div>
+            <div class="msg s"><div class="bbl">Hej! Jeg er glad for du nåede ud. Vil du fortælle mig lidt mere?</div><span class="mt">14:33</span></div>
+            <div class="msg r"><div class="bbl">Det er svært at snakke med mine forældre om det...</div><span class="mt">14:35</span></div>
+            <div class="msg s"><div class="bbl">Det lyder som om du bærer på noget tungt. Du er ikke alene 💗</div><span class="mt">14:37</span></div>
+            <div class="typing"><span></span><span></span><span></span></div>
+          </div>
+          <div class="qrow">
+            <div class="qr" onclick="sendQR('fmi','fmsgs',this)">Du er ikke alene</div>
+            <div class="qr" onclick="sendQR('fmi','fmsgs',this)">Vil du fortælle mere?</div>
+            <div class="qr" onclick="sendQR('fmi','fmsgs',this)">Vi har tid til dig</div>
+          </div>
+          <div class="ir">
+            <input class="mi" id="fmi" placeholder="Skriv en besked..." onkeydown="if(event.key==='Enter')sendMsg('fmi','fmsgs')">
+            <button class="send" onclick="sendMsg('fmi','fmsgs')"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function switchTab(flow){
+  document.getElementById('flow-bruger').classList.toggle('visible', flow==='bruger');
+  document.getElementById('flow-frivillig').classList.toggle('visible', flow==='frivillig');
+  document.getElementById('tab-b').className = 'tab' + (flow==='bruger' ? ' active-b' : '');
+  document.getElementById('tab-f').className = 'tab' + (flow==='frivillig' ? ' active-f' : '');
+  toast(flow==='bruger' ? 'Bruger flow ♥' : 'Frivillig flow →', flow==='bruger' ? 'pink' : 'blue');
+}
+function toggleDrawer(did, oid, hid){
+  const d=document.getElementById(did), o=document.getElementById(oid), h=document.getElementById(hid);
+  const open=d.classList.toggle('open');
+  o.classList.toggle('show', open);
+  h.classList.toggle('open', open);
+}
+function closeDrawer(did, oid, hid){
+  document.getElementById(did).classList.remove('open');
+  document.getElementById(oid).classList.remove('show');
+  document.getElementById(hid).classList.remove('open');
+}
+const carState={};
+function slide(cid, did, dir, total){
+  carState[cid] = ((carState[cid]||0) + dir + total) % total;
+  document.getElementById(cid).style.transform = `translateX(-${carState[cid]*375}px)`;
+  Array.from(document.getElementById(did).children).forEach((d,i)=>d.classList.toggle('on', i===carState[cid]));
+}
+function sendMsg(inputId, msgsId){
+  const inp=document.getElementById(inputId), msgs=document.getElementById(msgsId);
+  const txt=inp.value.trim(); if(!txt) return;
+  const msg=document.createElement('div'); msg.className='msg s';
+  const now=new Date();
+  msg.innerHTML=`<div class="bbl">${txt}</div><span class="mt">${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}</span>`;
+  msg.style.cssText='opacity:0;transform:translateY(10px);transition:all .25s ease';
+  msgs.appendChild(msg); inp.value='';
+  setTimeout(()=>{msg.style.opacity='1';msg.style.transform='translateY(0)'},10);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function sendQR(inputId, msgsId, el){
+  document.getElementById(inputId).value=el.textContent;
+  sendMsg(inputId, msgsId);
+}
+function toast(msg, type=''){
+  const c=document.getElementById('toasts'), t=document.createElement('div');
+  t.className='toast'+(type?' '+type:''); t.textContent=msg;
+  c.appendChild(t);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),350)},2200);
+}
+function setStatus(el, label){
+  document.querySelectorAll('.spill').forEach(s=>s.classList.remove('avail'));
+  el.classList.add('avail');
+  el.textContent=label==='Tilgængelig'?'● Tilgængelig':label;
+  toast('Status: '+label,'green');
+}
+</script>
+</body>
+</html>
