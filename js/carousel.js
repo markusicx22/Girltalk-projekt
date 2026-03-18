@@ -5,7 +5,7 @@ let carIndex = 0;
 const carTotal = 3;
 function carGoTo(n) {
   carIndex = (n + carTotal) % carTotal;
-  document.getElementById('hct').style.transform = 'translateX(-' + (carIndex 100) + '%)';
+  document.getElementById('hct').style.transform = 'translateX(-' + (carIndex * 100) + '%)';
   document.querySelectorAll('#hd .cdot').forEach(function(dot, i) {
     dot.classList.toggle('on', i === carIndex);
   });
