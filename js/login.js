@@ -1,6 +1,6 @@
-/* JS ER LAVET MED INSPIRATION FRA CLAUDE*/
+/* JS'EN ER LAVET MED INSPIRATION FRA CLAUDE.AI OG W3SCHOOL*/
 
-// 1. Adgangskode min 8 tegn
+// Adgangskode min 8 tegn
 document.getElementById('pw-input').addEventListener('input', function() {
   const msg = document.getElementById('pw-msg');
   const len = this.value.length;
@@ -12,9 +12,4 @@ document.getElementById('pw-input').addEventListener('input', function() {
     msg.textContent = '✓ Adgangskode OK';
     msg.style.color = '#4CAF50';
   }
-});
-
-// 2. Login knap
-document.getElementById('login-btn').addEventListener('click', function() {
-  window.location.href = 'home.html';
 });
