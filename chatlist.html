@@ -119,6 +119,83 @@
         <p class="logo">GIRLTALK ♥ DK</p>
         <span class="av" aria-hidden="true">ML</span>
     </header>
+    <!--DASHBOARD TOP-->
+    <div class="dash-top">
+        <p class="dash-welcome">God dag, Maria ♥</p>
+        <p class="dash-sub">Mandag 9. marts · Vagt 14:00 - 18:00</p>
+        <div class="spills" role="group" aria-label="Vælge status">
+            <button class="spill avail" id="spill-av" aria-pressed="true">Tilgængelig</button>
+            <button class="spill" id="spill-pa" aria-pressed="false">Pause</button>
+            <button class="spill" id="spill-off" aria-pressed="false">Offline</button>
+        </div>
+    </div>
+    <!--STATS-->
+    <div class="sgrid" aria-label="Statistik">
+        <div class="sc">
+            <p class="sn p">3</p>
+            <p class="s12">Aktive</p>
+        </div>
+        <div class="sc">
+            <p class="sn b">2</p>
+            <p class="s12">Venter</p>
+        </div>
+        <div class="sc">
+            <p class="sn d">8</p>
+            <p class="s12">I dag</p>
+        </div>
+    </div>
+    <!--TABS-->
+    <div class="ttabs" role="tablist" aria-label="Samtalestatus">
+        <button class="ttab on" role="tab" aria-selected="true">Aktive (3)</button>
+        <button class="ttab" role="tab" aria-selected="true">Venter (2)</button>
+        <button class="ttab" role="tab" aria-selected="true">Afsluttet</button>
+    </div>
+    <!--SAMTALELISTE-->
+    <main class="chat-list-body">
+        <ul class="chat-list" aria.label="Samtaler">
+            <li class="ci">
+                <a class="ci-link" href="chat.html" aria-label="Åben samtale med Anonym #142">
+                    <span class="urg urg-pink" aria-hidden="true"></span>
+                    <span class="ciav p" aria-hidden="true">A<span class="odot on"></span></span>
+                    <div class="cii">
+                        <div class="citp">
+                            <span class="cinm">Anonym #142</span>
+                            <span class="cinm">Nu</span>
+                        </div>
+                        <p class="cimsg">Jeg ved ikke hvad jeg skal gøre...</p>
+                    </div>
+                    <span class="cibdg" aria-label="3 ulæste beskeder">3</span>
+                </a>
+            </li>
+            <li class="ci">
+                <a class="ci-link" href="chat.html" aria-label="Åben samtale med Anonym #139">
+                    <span class="urg" aria-hidden="true"></span>
+                    <span class="ciav b" aria-hidden="true">B<span class="odot on"></span></span>
+                    <div class="cii">
+                        <div class="citp">
+                            <span class="cinm">Anonym #139</span>
+                            <span class="citm">2 min</span>
+                        </div>
+                        <p class="cimsg">Tak, det hjælper meget</p>
+                    </div>
+                </a>
+            </li>
+            <li class="ci">
+                <a class="ci-link" href="chat.html" aria-label="Åben samtale med Anonym #137">
+                    <span class="urg" aria-hidden="true"></span>
+                    <span class="ciav g" aria-hidden="true">C<span class="odot wt"></span></span>
+                    <div class="cii">
+                        <div slass="citp">
+                            <span class="cinm">Anonym #137</span>
+                            <span class="citm">14 min</span>
+                        </div>
+                        <p class="cimsg">Har du tid til at snakke lidt mere?</p>
+                    </div>
+                    <span class="cibdg" aria-label="1 ulæst besked">1</span>
+                </a>
+            </li>
+        </ul>
+    </main>
 </body>
 
 </html>
