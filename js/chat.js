@@ -1,8 +1,8 @@
 /* JS'EN ER LAVET MED INSPIRATION FRA CLAUDE.AI OG W3SCHOOL*/
 
 // Chat funktion
-const msgs = document.getElementById('fmsgs');
-const input = document.getElementById('fmi');
+const msgs = document.getElementById('messages');
+const input = document.getElementById('chat-input');
 msgs.scrollTop = msgs.scrollHeight;
 
 function sendMessage() {
@@ -11,12 +11,12 @@ function sendMessage() {
   const now = new Date();
   const time = now.getHours() + ':' + String(now.getMinutes()).padStart(2, '0');
   const row = document.createElement('div');
-  row.className = 'msg s';
+  row.className = 'message message--sent';
   const bubble = document.createElement('p');
-  bubble.className = 'bbl';
+  bubble.className = 'message__bubble';
   bubble.textContent = txt;
   const ts = document.createElement('span');
-  ts.className = 'mt';
+  ts.className = 'message__time';
   ts.textContent = time;
   row.appendChild(bubble);
   row.appendChild(ts);

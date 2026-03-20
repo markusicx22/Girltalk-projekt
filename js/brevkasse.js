@@ -1,11 +1,13 @@
+/* JS'EN ER LAVET MED INSPIRATION FRA CLAUDE.AI OG W3SCHOOL*/
+
 // Filter brevkasse
-document.querySelectorAll('#bk-filters .bk-tag').forEach(function(tag) {
+document.querySelectorAll('.bk-filters__tag').forEach(function(tag) {
   tag.addEventListener('click', function() {
-    document.querySelectorAll('#bk-filters .bk-tag').forEach(function(t) { t.classList.remove('bk-active'); });
-    tag.classList.add('bk-active');
+    document.querySelectorAll('.bk-filters__tag').forEach(function(t) { t.classList.remove('bk-filters__tag--active'); });
+    tag.classList.add('bk-filters__tag--active');
     const filter = tag.dataset.filter;
-    document.querySelectorAll('#bk-list .bk-card').forEach(function(card) {
+    document.querySelectorAll('.bk-card').forEach(function(card) {
       card.style.display = (filter === 'alle' || card.dataset.status === filter) ? '' : 'none';
     });
   });
-}); 
+});

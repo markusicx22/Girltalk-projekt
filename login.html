@@ -5,30 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GirlTalk · Log ind</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body class="page-login">
+  
+<!--Hjælp af Claude AI-->
 
   <main class="login">
-    <div class="lhero">
-      <p class="llogo">GIRLTALK ♥ DK</p>
-      <p class="ltag">Portal for frivillige rådgivere</p>
-      <span class="lbadge">Login krævet · Kun frivillige</span>
+    <div class="login__hero">
+      <p class="login__logo">GIRLTALK ♥︎ DK</p>
+      <p class="login__tagline">Portal for frivillige rådgivere</p>
+      <span class="login__badge">Login krævet · Kun frivillige</span>
     </div>
-    <div class="lbody">
-      <h1 class="lh">Velkommen tilbage</h1>
-      <p class="ls">Log ind med din GirlTalk-konto for at starte din vagt og rådgive unge.</p>
-      <div class="ig">
-        <label class="il" for="email-input">E-mail</label>
-        <input class="inp" id="email-input" type="email" placeholder="navn@girltalk.dk" aria-label="E-mail adresse">
+    <div class="login__body">
+      <h1 class="login__heading">Velkommen tilbage</h1>
+      <p class="login__subtitle">Log ind med din GirlTalk-konto for at starte din vagt og rådgive unge.</p>
+      <div class="login__field">
+        <label class="login__label" for="email-input">E-mail</label>
+        <input class="login__input" id="email-input" type="email" placeholder="navn@girltalk.dk" aria-label="E-mail adresse">
       </div>
-      <div class="ig">
-        <label class="il" for="pw-input">Adgangskode</label>
-        <input class="inp" id="pw-input" type="password" placeholder="••••••••" minlength="8" aria-label="Adgangskode">
+      <div class="login__field">
+        <label class="login__label" for="pw-input">Adgangskode</label>
+        <input class="login__input" id="pw-input" type="password" placeholder="••••••••" minlength="8" aria-label="Adgangskode">
         <p id="pw-msg" role="alert"></p>
       </div>
-      <p class="fgt">Glemt adgangskode?</p>
-      <a href="home.html" class="lbtn" aria-label="Log ind som frivillig">Log ind som frivillig →</a>
-      <p class="lnote">Kun for godkendte GirlTalk-frivillige.</p>
+      <p class="login__forgot">Glemt adgangskode?</p>
+      <a href="home.html" class="login__btn" aria-label="Log ind som frivillig">Log ind som frivillig →</a>
+      <p class="login__note">Kun for godkendte GirlTalk-frivillige.</p>
     </div>
   </main>
 
