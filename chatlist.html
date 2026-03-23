@@ -106,64 +106,76 @@
   </div>
 
   <!-- STATS -->
-  <div class="stats" aria-label="Statistik">
+  <!-- RETTELSE 1: Tilføjet role="region" så aria-label er tilladt på <div> -->
+  <div class="stats" role="region" aria-label="Statistik">
     <div class="stats__card"><p class="stats__number stats__number--pink">3</p><p class="stats__label">Aktive</p></div>
     <div class="stats__card"><p class="stats__number stats__number--blue">2</p><p class="stats__label">Venter</p></div>
     <div class="stats__card"><p class="stats__number stats__number--dark">8</p><p class="stats__label">I dag</p></div>
   </div>
 
   <!-- TABS -->
+  <!-- RETTELSE 5: role="tab" kræver tilhørende role="tabpanel".
+       Tilføjet aria-controls og id'er på knapperne, samt skjulte tabpanel-elementer. -->
   <div class="tabs" role="tablist" aria-label="Samtalestatus">
-    <button class="tabs__tab tabs__tab--active" role="tab" aria-selected="true">Aktive (3)</button>
-    <button class="tabs__tab" role="tab" aria-selected="false">Venter (2)</button>
-    <button class="tabs__tab" role="tab" aria-selected="false">Afsluttet</button>
+    <button class="tabs__tab tabs__tab--active" role="tab" aria-selected="true" aria-controls="panel-aktive" id="tab-aktive">Aktive (3)</button>
+    <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="panel-venter" id="tab-venter">Venter (2)</button>
+    <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="panel-afsluttet" id="tab-afsluttet">Afsluttet</button>
   </div>
 
   <!-- SAMTALELISTE -->
   <main class="chat-list">
-    <ul class="chat-list__items" aria-label="Samtaler">
-      <li class="chat-list__item">
-        <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #142">
-          <span class="chat-list__urgency chat-list__urgency--pink" aria-hidden="true"></span>
-          <span class="chat-list__avatar chat-list__avatar--pink" aria-hidden="true">A<span class="chat-list__status-dot chat-list__status-dot--online"></span></span>
-          <div class="chat-list__info">
-            <div class="chat-list__top">
-              <span class="chat-list__name">Anonym #142</span>
-              <span class="chat-list__time">Nu</span>
+    <!-- Tabpanels der svarer til hver tab -->
+    <div id="panel-aktive" role="tabpanel" aria-labelledby="tab-aktive">
+      <ul class="chat-list__items" aria-label="Aktive samtaler">
+        <li class="chat-list__item">
+          <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #142">
+            <span class="chat-list__urgency chat-list__urgency--pink" aria-hidden="true"></span>
+            <span class="chat-list__avatar chat-list__avatar--pink" aria-hidden="true">A<span class="chat-list__status-dot chat-list__status-dot--online"></span></span>
+            <div class="chat-list__info">
+              <div class="chat-list__top">
+                <span class="chat-list__name">Anonym #142</span>
+                <span class="chat-list__time">Nu</span>
+              </div>
+              <p class="chat-list__preview">Jeg ved ikke hvad jeg skal gøre...</p>
             </div>
-            <p class="chat-list__preview">Jeg ved ikke hvad jeg skal gøre...</p>
-          </div>
-          <span class="chat-list__badge" aria-label="3 ulæste beskeder">3</span>
-        </a>
-      </li>
-      <li class="chat-list__item">
-        <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #139">
-          <span class="chat-list__urgency" aria-hidden="true"></span>
-          <span class="chat-list__avatar chat-list__avatar--blue" aria-hidden="true">B<span class="chat-list__status-dot chat-list__status-dot--online"></span></span>
-          <div class="chat-list__info">
-            <div class="chat-list__top">
-              <span class="chat-list__name">Anonym #139</span>
-              <span class="chat-list__time">2 min</span>
+            <!-- RETTELSE 2+3: aria-label fjernet fra <span> (generic element).
+                 Teksten formidles via sr-only i stedet. -->
+            <span class="chat-list__badge" aria-hidden="true">3</span>
+            <span class="sr-only">3 ulæste beskeder</span>
+          </a>
+        </li>
+        <li class="chat-list__item">
+          <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #139">
+            <span class="chat-list__urgency" aria-hidden="true"></span>
+            <span class="chat-list__avatar chat-list__avatar--blue" aria-hidden="true">B<span class="chat-list__status-dot chat-list__status-dot--online"></span></span>
+            <div class="chat-list__info">
+              <div class="chat-list__top">
+                <span class="chat-list__name">Anonym #139</span>
+                <span class="chat-list__time">2 min</span>
+              </div>
+              <p class="chat-list__preview">Tak, det hjælper meget ❤️</p>
             </div>
-            <p class="chat-list__preview">Tak, det hjælper meget ❤️</p>
-          </div>
-        </a>
-      </li>
-      <li class="chat-list__item">
-        <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #137">
-          <span class="chat-list__urgency" aria-hidden="true"></span>
-          <span class="chat-list__avatar chat-list__avatar--green" aria-hidden="true">C<span class="chat-list__status-dot chat-list__status-dot--waiting"></span></span>
-          <div class="chat-list__info">
-            <div class="chat-list__top">
-              <span class="chat-list__name">Anonym #137</span>
-              <span class="chat-list__time">14 min</span>
+          </a>
+        </li>
+        <li class="chat-list__item">
+          <a class="chat-list__link" href="chat.html" aria-label="Åbn samtale med Anonym #137">
+            <span class="chat-list__urgency" aria-hidden="true"></span>
+            <span class="chat-list__avatar chat-list__avatar--green" aria-hidden="true">C<span class="chat-list__status-dot chat-list__status-dot--waiting"></span></span>
+            <div class="chat-list__info">
+              <div class="chat-list__top">
+                <span class="chat-list__name">Anonym #137</span>
+                <span class="chat-list__time">14 min</span>
+              </div>
+              <p class="chat-list__preview">Har du tid til at snakke lidt mere?</p>
             </div>
-            <p class="chat-list__preview">Har du tid til at snakke lidt mere?</p>
-          </div>
-          <span class="chat-list__badge" aria-label="1 ulæst besked">1</span>
-        </a>
-      </li>
-    </ul>
+            <span class="chat-list__badge" aria-hidden="true">1</span>
+            <span class="sr-only">1 ulæst besked</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="panel-venter" role="tabpanel" aria-labelledby="tab-venter" hidden></div>
+    <div id="panel-afsluttet" role="tabpanel" aria-labelledby="tab-afsluttet" hidden></div>
   </main>
 
   <!-- BUNDNAVIGATION -->
@@ -174,7 +186,9 @@
     </a>
     <a href="chatlist.html" class="bottom-nav__item bottom-nav__item--active" aria-label="Chats" aria-current="page">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <span class="bottom-nav__badge" aria-label="Nye beskeder"></span>
+      <!-- RETTELSE 4: aria-label fjernet fra <span>, erstattet med aria-hidden + sr-only -->
+      <span class="bottom-nav__badge" aria-hidden="true"></span>
+      <span class="sr-only">Nye beskeder</span>
       <span>Chats</span>
     </a>
     <a href="brevkasse.html" class="bottom-nav__item" aria-label="Brevkasse">

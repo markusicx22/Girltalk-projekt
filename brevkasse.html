@@ -99,31 +99,36 @@
     <span class="bk-hero__eyebrow">Redaktion · Brevkasse</span>
     <h1 class="bk-hero__title">PIGETANKER</h1>
     <p class="bk-hero__desc">Besvar og godkend indsendte breve. Udgives hver onsdag.</p>
-    <div class="bk-hero__stats" aria-label="Statistik">
+    <!-- RETTELSE 1: Tilføjet role="region" så aria-label er tilladt på <div> -->
+    <div class="bk-hero__stats" role="region" aria-label="Statistik">
       <span class="bk-hero__stat--pink">12 nye indsendt</span>
       <span class="bk-hero__stat--ghost">3 afventer svar</span>
     </div>
   </div>
 
   <!-- FILTER -->
+  <!-- RETTELSE 7: role="tab" kræver tilhørende role="tabpanel".
+       Filtrene er ændret til role="button" med aria-pressed da de er filtre, ikke rigtige tabs. -->
   <div class="bk-filters">
-    <ul id="bk-filters-list" role="tablist" aria-label="Filtrer breve">
-      <li class="bk-filters__tag bk-filters__tag--active" data-filter="alle" role="tab" aria-selected="true">Alle</li>
-      <li class="bk-filters__tag" data-filter="afventer" role="tab" aria-selected="false">Afventer</li>
-      <li class="bk-filters__tag" data-filter="besvaret" role="tab" aria-selected="false">Besvaret</li>
-      <li class="bk-filters__tag" data-filter="udgivet" role="tab" aria-selected="false">Udgivet</li>
-      <li class="bk-filters__tag" data-filter="afvist" role="tab" aria-selected="false">Afvist</li>
+    <ul id="bk-filters-list" role="group" aria-label="Filtrer breve">
+      <li class="bk-filters__tag bk-filters__tag--active" data-filter="alle" role="button" aria-pressed="true">Alle</li>
+      <li class="bk-filters__tag" data-filter="afventer" role="button" aria-pressed="false">Afventer</li>
+      <li class="bk-filters__tag" data-filter="besvaret" role="button" aria-pressed="false">Besvaret</li>
+      <li class="bk-filters__tag" data-filter="udgivet" role="button" aria-pressed="false">Udgivet</li>
+      <li class="bk-filters__tag" data-filter="afvist" role="button" aria-pressed="false">Afvist</li>
     </ul>
   </div>
 
   <!-- BREVE -->
   <main class="bk-list" id="bk-list" aria-label="Indsendte breve">
 
+    <!-- RETTELSE 2-5: Tilføjet <h2> i hvert <article> så de ikke mangler overskrift (warning) -->
     <article class="bk-card bk-card--pending" data-status="afventer">
       <div class="bk-card__top">
         <span class="bk-card__status bk-card__status--pending">Afventer svar</span>
         <span class="bk-card__date">Indsendt 9. mar</span>
       </div>
+      <h2 class="sr-only">Brev om kærlighed – Anonym, 15 år</h2>
       <p class="bk-card__question">"Min kæreste vil gerne i seng med mig. Hvad skal jeg gøre?"</p>
       <div class="bk-card__meta">
         <span class="bk-card__chip">Kærlighed</span>
@@ -140,6 +145,7 @@
         <span class="bk-card__status bk-card__status--pending">Afventer svar</span>
         <span class="bk-card__date">Indsendt 8. mar</span>
       </div>
+      <h2 class="sr-only">Brev om krop – Anonym, 13 år</h2>
       <p class="bk-card__question">"Jeg er rigtig usikker på min krop og ved ikke hvad jeg skal gøre."</p>
       <div class="bk-card__meta">
         <span class="bk-card__chip">Krop</span>
@@ -156,6 +162,7 @@
         <span class="bk-card__status bk-card__status--answered">Besvaret</span>
         <span class="bk-card__date">Indsendt 5. mar</span>
       </div>
+      <h2 class="sr-only">Brev om venner – Anonym, 14 år</h2>
       <p class="bk-card__question">"Jeg gad virkelig godt at få nye veninder. Jeg ved bare ikke hvordan."</p>
       <div class="bk-card__meta">
         <span class="bk-card__chip">Venner</span>
@@ -172,6 +179,7 @@
         <span class="bk-card__status bk-card__status--published">✓ Udgivet</span>
         <span class="bk-card__date">Onsdag 5. mar</span>
       </div>
+      <h2 class="sr-only">Brev om familie – Anonym, 16 år</h2>
       <p class="bk-card__question">"Mine forældre skændes hele tiden. Jeg ved ikke hvem jeg skal tale med."</p>
       <div class="bk-card__meta">
         <span class="bk-card__chip">Familie</span>
@@ -189,7 +197,9 @@
     </a>
     <a href="chatlist.html" class="bottom-nav__item" aria-label="Chats">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <span class="bottom-nav__badge" aria-label="Nye beskeder"></span>
+      <!-- RETTELSE 6: aria-label fjernet fra <span>, erstattet med aria-hidden + sr-only -->
+      <span class="bottom-nav__badge" aria-hidden="true"></span>
+      <span class="sr-only">Nye beskeder</span>
       <span>Chats</span>
     </a>
     <a href="brevkasse.html" class="bottom-nav__item bottom-nav__item--active" aria-label="Brevkasse" aria-current="page">

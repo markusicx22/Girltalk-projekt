@@ -96,6 +96,9 @@
   </header>
 
   <!-- CAROUSEL -->
+  <!-- RETTELSE 3: role="tablist" er erstattet med role="region" på wrapperen,
+       og prikkerne bruger nu role="button" i stedet for role="tab",
+       da der ikke er tilhørende role="tabpanel" elementer. -->
   <div class="carousel" aria-label="Overblik" role="region">
     <div class="carousel__track" id="carousel-track">
       <div class="carousel__slide carousel__slide--blue">
@@ -135,17 +138,21 @@
     <button class="carousel__arrow carousel__arrow--next" id="car-next" aria-label="Næste slide">
       <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
     </button>
-    <div class="carousel__dots" id="hd" role="tablist" aria-label="Carousel navigation">
-      <span class="carousel__dot carousel__dot--active" role="tab" aria-selected="true" aria-label="Slide 1"></span>
-      <span class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 2"></span>
-      <span class="carousel__dot" role="tab" aria-selected="false" aria-label="Slide 3"></span>
+    <!-- RETTELSE 3: Ændret fra role="tablist" til role="group", og prikkerne fra role="tab" til role="button".
+         aria-selected er fjernet, da det kun gælder for role="tab". 
+         aria-pressed bruges i stedet for at indikere aktiv tilstand. -->
+    <div class="carousel__dots" id="hd" role="group" aria-label="Carousel navigation">
+      <span class="carousel__dot carousel__dot--active" role="button" aria-pressed="true" aria-label="Slide 1"></span>
+      <span class="carousel__dot" role="button" aria-pressed="false" aria-label="Slide 2"></span>
+      <span class="carousel__dot" role="button" aria-pressed="false" aria-label="Slide 3"></span>
     </div>
   </div>
 
   <!-- INDHOLD -->
   <main class="content">
 
-    <div class="stats" aria-label="Statistik">
+    <!-- RETTELSE 1: Tilføjet role="region" til <div class="stats"> så aria-label er tilladt. -->
+    <div class="stats" role="region" aria-label="Statistik">
       <div class="stats__card"><p class="stats__number stats__number--pink">3</p><p class="stats__label">Aktive</p></div>
       <div class="stats__card"><p class="stats__number stats__number--blue">2</p><p class="stats__label">Venter</p></div>
       <div class="stats__card"><p class="stats__number stats__number--dark">8</p><p class="stats__label">I dag</p></div>
@@ -245,7 +252,10 @@
     </a>
     <a href="chatlist.html" class="bottom-nav__item" aria-label="Chats">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      <span class="bottom-nav__badge" aria-label="Nye beskeder"></span>
+      <!-- RETTELSE 2: aria-label fjernet fra <span> (generic element).
+           Beskeden formidles nu via et visually-hidden tekstelement inde i linket. -->
+      <span class="bottom-nav__badge" aria-hidden="true"></span>
+      <span class="sr-only">Nye beskeder</span>
       <span>Chats</span>
     </a>
     <a href="brevkasse.html" class="bottom-nav__item" aria-label="Brevkasse">
