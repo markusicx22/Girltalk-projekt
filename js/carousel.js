@@ -14,4 +14,4 @@ document.getElementById('car-prev').addEventListener('click', function() { carGo
 document.getElementById('car-next').addEventListener('click', function() { carGoTo(carIndex + 1); });
 document.querySelectorAll('.carousel__dot').forEach(function(dot, i) {
   dot.addEventListener('click', function() { carGoTo(i); });
-});
+})
