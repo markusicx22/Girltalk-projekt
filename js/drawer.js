@@ -1,4 +1,4 @@
-/* JS'EN ER LAVET MED INSPIRATION FRA CLAUDE.AI OG W3SCHOOL*/
+/* JS'EN ER LAVET MED INSPIRATION FRA CLAUDE.AI OG Dev.to*/
 
 // Burgermenu
 function openDrawer() {
